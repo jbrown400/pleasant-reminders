@@ -1,11 +1,14 @@
 from twitter_api import send_tweet
-import csv
+import random
 
 def get_tweet_text() -> str:
-	tweet_file = open('./tweets.csv', 'r')
-	reader = csv.reader(tweet_file)
-	for entry in reader:
-		print(entry)
+	tweet_file = open('./data/tweets.txt', 'r')
+	content = tweet_file.readlines()
+	content = [x.strip() for x in content]
+	print(random.choice(content))
+
+	# recent_tweet_file = open('.')
+
 	# Pull in text file
 	# Randomly pick one
 	# If it hasn't been one of the last 5 tweets
