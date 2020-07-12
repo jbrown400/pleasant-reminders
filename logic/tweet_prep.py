@@ -12,15 +12,11 @@ def get_tweet_text() -> str:
 	recent_tweet_content = recent_tweet_file_reader.readlines()
 	recent_tweet_content = [x.strip() for x in recent_tweet_content]
 
-	choice = ''
 	# Loop until we choose a tweet we haven't tweeted recently
 	while True:
 		choice = random.choice(content)
 		if choice not in recent_tweet_content:
-			print("Nope")
 			break
-		else:
-			print("Yep")
 
 	# Write current tweet to recent file
 	recent_tweet_file_writer = open('./data/recent_tweets.txt', 'a')
@@ -44,6 +40,7 @@ def remove_oldest_recent_tweet():
 	if len(recent_tweet_content) > 5:
 		recent_tweet_file_writer = open('./data/recent_tweets.txt', 'w')
 		for index, line in enumerate(recent_tweet_content):
+			# Don't write (delete) the first line since it's the oldest recent tweet
 			if index != 0:
 				recent_tweet_file_writer.write(line+'\n')
 		recent_tweet_file_writer.close()
