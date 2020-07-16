@@ -37,7 +37,7 @@ def remove_oldest_recent_tweet():
 	recent_tweet_content = [x.strip() for x in recent_tweet_content]
 
 	# Clear out recents after 5 tweets
-	if len(recent_tweet_content) > 5:
+	if len(recent_tweet_content) > 45:
 		recent_tweet_file_writer = open('./data/recent_tweets.txt', 'w')
 		for index, line in enumerate(recent_tweet_content):
 			# Don't write (delete) the first line since it's the oldest recent tweet
